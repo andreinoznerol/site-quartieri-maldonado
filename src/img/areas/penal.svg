@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Balança da justiça"><rect width="400" height="500" fill="#002a61"/><g fill="none" stroke="#ffffff" stroke-opacity=".12" stroke-width="1"><circle cx="200" cy="285" r="150"/><circle cx="200" cy="285" r="195"/></g><path d="M74 391 A150 150 0 1 1 290 405 L318 436" fill="none" stroke="#bdcad9" stroke-opacity=".55" stroke-width="2" stroke-linecap="round"/><g fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="200" cy="168" r="7"/><path d="M200 175V372"/><path d="M118 205H282"/>
+<path d="M118 205L88 292M118 205L148 292"/><path d="M80 292H156C152 318 136 330 118 330C100 330 84 318 80 292Z"/>
+<path d="M282 205L252 292M282 205L312 292"/><path d="M244 292H320C316 318 300 330 282 330C264 330 248 318 244 292Z"/>
+<path d="M168 372H232L244 392H156Z"/></g></svg>

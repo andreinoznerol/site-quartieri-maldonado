@@ -1,0 +1,74 @@
+# Painel de publicações do site Quartieri & Maldonado (Decap CMS)
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'Nova publicação: {{slug}}'
+    update: 'Publicação atualizada: {{slug}}'
+    delete: 'Publicação removida: {{slug}}'
+    uploadMedia: 'Imagem enviada: {{path}}'
+    deleteMedia: 'Imagem removida: {{path}}'
+
+locale: pt
+site_url: https://quartierimaldonado.com
+display_url: https://quartierimaldonado.com
+logo_url: https://quartierimaldonado.com/img/logo-mark.svg
+
+media_folder: src/img/uploads
+public_folder: /img/uploads
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: '-'
+
+collections:
+  - name: posts
+    label: Publicações
+    label_singular: Publicação
+    description: 'Artigos e notícias do escritório. Depois de clicar em Publicar, a publicação aparece no site em 1 ou 2 minutos.'
+    folder: content/posts
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    identifier_field: title
+    summary: '{{title}} ({{category}}, {{date | date("DD/MM/YYYY")}})'
+    sortable_fields: ['date', 'title']
+    fields:
+      - label: Título
+        name: title
+        widget: string
+        hint: 'Seja direto. Exemplo: "Rescisão indireta: quando o trabalhador pode encerrar o contrato".'
+      - label: Data de publicação
+        name: date
+        widget: datetime
+        format: 'YYYY-MM-DD'
+        date_format: 'DD/MM/YYYY'
+        time_format: false
+        default: '{{now}}'
+      - label: Categoria
+        name: category
+        widget: select
+        options: ['Artigos', 'Notícias']
+        default: 'Artigos'
+      - label: Resumo
+        name: summary
+        widget: text
+        hint: 'Uma ou duas frases. Aparece no card da página inicial e nos resultados do Google.'
+      - label: Imagem de capa
+        name: image
+        widget: image
+        required: false
+        choose_url: false
+        hint: 'Opcional. Use foto horizontal, de preferência própria ou de banco gratuito (Unsplash, Pexels). Sem imagem, o site usa a ilustração padrão do escritório.'
+      - label: Descrição da imagem
+        name: image_alt
+        widget: string
+        required: false
+        hint: 'Opcional. Descreva a imagem em poucas palavras (ajuda na acessibilidade e no Google).'
+      - label: Texto
+        name: body
+        widget: markdown
+        buttons: ['bold', 'italic', 'link', 'heading-two', 'heading-three', 'quote', 'bulleted-list', 'numbered-list']
+        editor_components: ['image']
+        modes: ['rich_text']

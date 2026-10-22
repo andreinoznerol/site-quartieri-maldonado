@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Ilustração de uma janela de navegador conectada ao escritório, representando a presença digital">
+  <rect width="1200" height="900" fill="#002a61"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity=".10" stroke-width="1.5">
+    <circle cx="600" cy="470" r="250"/><circle cx="600" cy="470" r="330"/><circle cx="600" cy="470" r="410"/>
+  </g>
+  <path d="M362 727 A320 320 0 1 1 830 760 L880 812" fill="none" stroke="#bdcad9" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/>
+  <g fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- janela do navegador -->
+    <rect x="380" y="270" width="440" height="320" rx="18" fill="#00357a"/>
+    <path d="M380 318H820"/>
+    <circle cx="410" cy="294" r="6"/><circle cx="432" cy="294" r="6"/><circle cx="454" cy="294" r="6"/>
+    <rect x="500" y="284" width="280" height="20" rx="10" stroke-opacity=".5" stroke-width="2.5"/>
+    <!-- conteúdo -->
+    <rect x="412" y="350" width="150" height="150" rx="75" stroke="#bdcad9" stroke-width="3"/>
+    <path d="M590 362H786M590 392H760M590 422H786M590 452H730" stroke-opacity=".7" stroke-width="3"/>
+    <rect x="590" y="486" width="120" height="34" rx="17" fill="#ffffff" stroke="none"/>
+    <path d="M412 540H786" stroke-opacity=".35" stroke-width="2.5"/>
+    <path d="M412 562H700" stroke-opacity=".35" stroke-width="2.5"/>
+    <!-- lupa (busca) -->
+    <circle cx="300" cy="380" r="40" fill="#002a61"/><path d="M329 409L360 440"/>
+    <!-- balão de conversa (atendimento próximo) -->
+    <path d="M858 380H970A18 18 0 0 1 988 398V458A18 18 0 0 1 970 476H904L878 500V476H858A18 18 0 0 1 840 458V398A18 18 0 0 1 858 380Z" fill="#002a61"/>
+    <path d="M870 414H958M870 442H934" stroke-opacity=".7" stroke-width="3"/>
+  </g>
+  <!-- conexões -->
+  <g fill="none" stroke="#bdcad9" stroke-width="2.5" stroke-dasharray="4 10" stroke-linecap="round" stroke-opacity=".8">
+    <path d="M340 400C360 410 370 420 380 430"/>
+    <path d="M820 430C830 425 836 420 840 418"/>
+    <path d="M600 590V660"/>
+  </g>
+  <g fill="#ffffff"><circle cx="600" cy="676" r="7"/><circle cx="300" cy="380" r="5" fill="#bdcad9"/></g>
+  <!-- balança da justiça no círculo do conteúdo -->
+  <g transform="translate(487 425)" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="0" cy="-42" r="4"/><path d="M0 -38V44"/><path d="M-44 -26H44"/>
+    <path d="M-44 -26L-60 14M-44 -26L-28 14"/><path d="M-64 14H-24C-26 28-34 34-44 34S-62 28-64 14Z"/>
+    <path d="M44 -26L28 14M44 -26L60 14"/><path d="M24 14H64C62 28 54 34 44 34S26 28 24 14Z"/>
+    <path d="M-20 44H20L26 54H-26Z"/>
+  </g>
+</svg>
