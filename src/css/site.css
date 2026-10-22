@@ -372,7 +372,7 @@ a.fact:hover strong{color:var(--vivo)}
 @media (max-width:900px){
   .phero{padding:104px 0 72px}
   .phero .wrap{grid-template-columns:1fr;gap:48px}
-  .phero__art{justify-self:start;max-width:300px;margin-left:16px}
+  .phero__art{display:none}
   .statement,.block,.band,.faq{padding:80px 0}
   .statement .wrap,.faq .wrap{grid-template-columns:1fr;gap:24px}
   .statement.quiet .wrap{text-align:left}
