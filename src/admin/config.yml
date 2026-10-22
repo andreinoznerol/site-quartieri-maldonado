@@ -66,9 +66,17 @@ collections:
         widget: string
         required: false
         hint: 'Opcional. Descreva a imagem em poucas palavras (ajuda na acessibilidade e no Google).'
+      - label: Arquivo PDF
+        name: pdf
+        widget: file
+        required: false
+        choose_url: false
+        hint: 'Opcional. Anexe o PDF do artigo ou de um material complementar. No site, aparece o botão "Baixar PDF".'
       - label: Texto
         name: body
         widget: markdown
+        required: false
+        hint: 'Para a publicação aparecer no Google, prefira colar o texto aqui (dá para copiar do Word ou do PDF). Se preferir publicar só com o PDF, deixe em branco e anexe o arquivo acima.'
         buttons: ['bold', 'italic', 'link', 'heading-two', 'heading-three', 'quote', 'bulleted-list', 'numbered-list']
         editor_components: ['image']
         modes: ['rich_text']

@@ -49,7 +49,12 @@ def load_posts(folder):
         body_html = re.sub(r'<a href="(https?://[^"]+)"', r'<a href="\1" target="_blank" rel="noopener"', body_html)
         img = str(meta.get('image') or '').strip() or DEFAULT_IMG
         if not img.startswith(('/', 'http')): img = '/' + img
+        pdf = str(meta.get('pdf') or '').strip()
+        if pdf and not pdf.startswith(('/', 'http')): pdf = '/' + pdf
+        if not body_html.strip() and not pdf:
+            print('Aviso: publicação sem texto e sem PDF ignorada:', path); continue
         posts.append({
+            'pdf': pdf,
             'title': title, 'category': cat, 'cat_slug': slugify(cat), 'slug': slugify(slug),
             'date': d, 'summary': str(meta.get('summary') or '').strip(),
             'image': img, 'image_alt': str(meta.get('image_alt') or '').strip() or (DEFAULT_ALT if img == DEFAULT_IMG else title),
@@ -61,6 +66,15 @@ def load_posts(folder):
         p['date_long'] = f"{p['date'].day} de {MESES[p['date'].month-1]} de {p['date'].year}"
         p['date_short'] = f"{p['date'].day:02d} {MESES_CURTOS[p['date'].month-1]} {p['date'].year}"
     return posts
+
+
+PDF_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5"/><path d="M5 19h14"/></svg>'
+
+
+def pdf_block(p):
+    if not p.get('pdf'): return ''
+    intro = '' if p['body'].strip() else '<p>O conteúdo completo desta publicação está disponível em PDF.</p>'
+    return f'''{intro}<p style="margin-top:36px"><a class="btn btn-solid" style="color:#fff;text-decoration:none" href="{E(p['pdf'])}" target="_blank" rel="noopener" download>{PDF_ICON}Baixar PDF</a></p>'''
 
 
 def img_attrs(p):
@@ -137,6 +151,7 @@ def build(g, OUT, content_dir):
 <article class="article">
   <div class="wrap">
     {p['body']}
+    {pdf_block(p)}
     <a class="article__back" href="{r}publicacoes/">Voltar para publicações</a>
   </div>
 </article>
