@@ -8,7 +8,7 @@ page_area('trabalhador',
  'Para trabalhadores',
  'Seus direitos trabalhistas merecem análise séria e atuação firme',
  'Se houve atraso salarial, falta de FGTS, horas extras não pagas, irregularidades na rescisão, acidente de trabalho ou outras violações, o caso pode exigir providência jurídica adequada.',
- 'Falar com o escritório', 'trabalhista', 'Ilustração de um capacete de trabalho e uma pasta.', 'jackson', [
+ 'Falar com o escritório', 'fotos/trabalhador.jpg', 'Trabalhadores de capacete e colete refletivo em um canteiro de obras.', 'jackson', [
  b_statement('Nem toda irregularidade aparece de imediato', 'Muitos trabalhadores encerram o contrato sem saber se receberam corretamente, suportam jornadas abusivas por longos períodos ou convivem com descumprimentos recorrentes sem conhecer as medidas cabíveis. A análise da relação de emprego, dos pagamentos realizados, da jornada praticada e dos documentos disponíveis indica a viabilidade jurídica e o caminho processual adequado.'),
  b_checks('Muitos trabalhadores sofrem diariamente com:', '', ['Atraso de salários','Falta de depósito de FGTS','Horas extras não pagas','Intervalos suprimidos e excesso de jornada','Insalubridade e periculosidade','Acidente de trabalho','Assédio moral e pressão abusiva','Demissão com verbas rescisórias incorretas'], warn=True),
  b_statement('Cada situação exige leitura técnica própria', 'A análise da relação de emprego, dos documentos disponíveis e das circunstâncias do caso permite indicar a viabilidade e a medida juridicamente cabível.', link=('rescisao-indireta.html','Salário atrasado ou FGTS sem depósito? Veja a rescisão indireta')),
@@ -92,7 +92,7 @@ def legal_page(fname, title, lede, updated, sections, canon, desc):
     open(f'{OUT}/{fname}', 'w', encoding='utf-8').write(doc)
 
 QM = 'Quartieri &amp; Maldonado Advogados Associados'
-DPO = '<a href="mailto:dpo@quartierimaldonado.com">dpo@quartierimaldonado.com</a>'
+DPO = '<a href="mailto:adm@quartierimaldonado.com">adm@quartierimaldonado.com</a>'
 
 legal_page('termos-de-uso.html', 'Termos de Uso',
  'Regras básicas para acesso ao site, leitura de publicações e uso de conteúdo informativo.',

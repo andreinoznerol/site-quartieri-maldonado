@@ -97,7 +97,7 @@ def footer(r, wa_link):
       <div>
         <h4>Redes sociais</h4>
         <div class="socials">{soc}</div>
-        <p class="footer__contact">(55) 99735-0808</p>
+        <p class="footer__contact">(55) 99735-0808<br><a href="mailto:adm@quartierimaldonado.com">adm@quartierimaldonado.com</a></p>
       </div>
     </div>
     <div class="footer__bottom">
@@ -253,6 +253,7 @@ def b_video(vid, tema):
 """
 
 def page_area(slug, meta_title, meta_desc, crumb, h1, lede, cta_btn, art, art_alt, owner, blocks, wa_msg, parent=None):
+    art_file = art if '.' in art else art + '.svg'
     r = '../../'
     link = wa(wa_msg)
     own = ''
@@ -274,7 +275,7 @@ def page_area(slug, meta_title, meta_desc, crumb, h1, lede, cta_btn, art, art_al
       </div>
       {own}
     </div>
-    <div class="phero__art"><div class="arch"><img src="{r}img/areas/{art}.svg" alt="{E(art_alt)}" width="400" height="500"></div></div>
+    <div class="phero__art"><div class="arch"><img src="{r}img/areas/{art_file}" alt="{E(art_alt)}" width="400" height="500"></div></div>
   </div>
 </section>
 '''
@@ -310,7 +311,7 @@ page_area('penal',
  'Defesa Criminal',
  'Foi intimado para depor na polícia ou citado em processo criminal?',
  'A forma como você se posiciona no início pode influenciar todo o caso. Antes de qualquer manifestação, é necessário avaliar a investigação, a acusação e os riscos processuais.',
- 'Solicitar orientação jurídica', 'penal', 'Ilustração de uma balança da justiça.', 'matheus', [
+ 'Solicitar orientação jurídica', 'fotos/penal.jpg', 'Estátua da Justiça em bronze, de olhos vendados, segurando a balança e a espada diante de livros jurídicos.', 'matheus', [
  b_statement('Receber uma intimação ou citação criminal gera dúvidas e insegurança', 'Nessas situações, a pessoa pode não saber se deve falar ou permanecer em silêncio, desconhecer o conteúdo da investigação, acreditar que não tem nada a esconder e comparecer sem orientação, ou subestimar o impacto de suas declarações. No âmbito criminal, cada palavra pode ter consequência jurídica relevante.', 'tint'),
  b_band('Interrogatório na polícia: seus direitos fundamentais', 'Ao ser intimado para depor, você possui direitos que devem ser respeitados.', ['Direito ao silêncio','Direito de não produzir prova contra si','Direito de ser assistido por advogado']),
  b_checks('Declarações prestadas sem orientação podem:', '', ['Ser interpretadas de forma desfavorável','Gerar contradições','Comprometer a estratégia de defesa futura'], warn=True),
@@ -339,7 +340,7 @@ page_area('militar',
  'Direito Militar',
  'Foi intimado em Inquérito Policial Militar, sindicância ou citado na Justiça Militar?',
  'A forma como você se defende desde o início pode impactar diretamente sua carreira e sua liberdade. Procedimentos administrativos e criminais militares exigem orientação técnica antes de qualquer manifestação.',
- 'Solicitar orientação jurídica', 'militar', 'Ilustração de um escudo com estrela militar.', 'matheus', [
+ 'Solicitar orientação jurídica', 'fotos/militar.jpg', 'Militares em formação, com capacete tático e óculos de proteção.', 'matheus', [
  b_statement('A atividade militar exige decisões rápidas, a investigação também', 'Quando surge uma investigação, seja um IPM, sindicância ou processo administrativo, o militar pode não ter acesso imediato a todas as informações, ser chamado a prestar depoimento sem conhecer o conteúdo integral dos autos, subestimar o impacto jurídico da sua manifestação ou acreditar que o procedimento é apenas administrativo. Esses procedimentos podem evoluir para consequências relevantes na esfera disciplinar e penal.', 'tint'),
  b_checks('Situações que exigem atenção imediata', 'A atuação jurídica é especialmente relevante quando o militar é:', ['Intimado para depor em Inquérito Policial Militar (IPM)','Notificado em sindicância investigatória','Acusado em Processo Administrativo Disciplinar Militar (PADM)','Citado para responder a ação penal militar']),
  b_band('Direitos fundamentais no depoimento', 'O depoimento é um dos momentos mais sensíveis da investigação. A versão dos fatos passa a integrar formalmente o processo e eventuais contradições podem ser utilizadas posteriormente. O militar possui direitos que devem ser respeitados:', ['Direito ao silêncio','Direito de não produzir prova contra si','Direito de ser assistido por advogado']),
@@ -365,7 +366,7 @@ page_area('mensalista-funcional',
  'Assistência funcional',
  'Proteção jurídica contínua para quem atua na segurança pública',
  'Atendimento preventivo e resposta técnica para Brigada Militar, Bombeiros Militares e SUSEPE no Rio Grande do Sul.',
- 'Falar com o escritório', 'funcional', 'Ilustração de um distintivo de segurança pública com uma chama.', None, [
+ 'Falar com o escritório', 'fotos/mensalista-funcional.jpg', 'Policiais militares de costas, com a inscrição Polícia Militar no colete.', None, [
  b_statement('Atuação ajustada à rotina funcional', 'O acompanhamento considera o vínculo funcional, o tipo de procedimento e a urgência do caso.', 'tint'),
  b_details('Públicos atendidos', 'Grupos centrais que recebem nossa assistência funcional.', [
    {'t':'Brigada Militar','p':'Orientação em sindicâncias, PADs, IPMs e questões correlatas.','href':'brigadianos.html','more':'Ver a assistência para brigadianos'},
@@ -391,7 +392,7 @@ page_area('direito-publico',
  'Direito Público',
  'Atuação técnica em Direito Público',
  'Defesa de servidores, candidatos e militares em procedimentos administrativos, disciplinares e situações que envolvem relações com o Estado.',
- 'Falar com o escritório', 'publico', 'Ilustração de um edifício público com colunas.', None, [
+ 'Falar com o escritório', 'fotos/direito-publico.jpg', 'Mão folheando autos de um processo sobre a mesa, com uma caneta ao lado.', None, [
  b_statement('Relações com o Estado exigem leitura técnica específica', 'Procedimentos administrativos, investigações disciplinares, concursos públicos e carreiras militares envolvem regras próprias, prazos rígidos e consequências que podem ser duradouras. A atuação jurídica nesse campo exige conhecimento do ambiente institucional, dos limites legais da Administração e das garantias asseguradas ao cidadão diante do poder público.', 'tint'),
  b_checks('Principais temas atendidos', '', ['Processos administrativos disciplinares e sindicâncias','Investigação social em concursos públicos','Procedimentos disciplinares e penais militares','Defesa em IPM, PADM e ação penal militar','Recursos administrativos e controle judicial de atos','Retirada e restrição de antecedentes criminais']),
  b_details('Frentes de atuação', 'Áreas específicas de atuação do escritório em Direito Público.', [
@@ -415,7 +416,7 @@ page_area('trabalhista',
  'Direito Trabalhista',
  'Atuação objetiva em conflitos trabalhistas',
  'Leitura técnica de verbas, jornada, rescisões e conflitos de trabalho, com análise da prova e dos riscos do caso.',
- 'Falar com o escritório', 'trabalhista', 'Ilustração de um capacete de trabalho e uma pasta.', 'jackson', [
+ 'Falar com o escritório', 'fotos/trabalhista.jpg', 'Trabalhador de capacete e viseira operando uma esmerilhadeira, com faíscas ao redor.', 'jackson', [
  b_statement('Casos trabalhistas com análise direta e base técnica sólida', 'O escritório atua em demandas trabalhistas que exigem interpretação precisa da relação contratual, da jornada praticada, dos documentos disponíveis e dos reflexos jurídicos envolvidos. A avaliação considera riscos, viabilidade jurídica, produção de prova e a medida cabível para solução do conflito.', 'tint'),
  b_details('Principais temas trabalhistas analisados pelo escritório', '', [
    {'t':'Rescisão indireta','p':'Análise técnica e condução de pedidos de rescisão indireta por descumprimento contratual.','href':'rescisao-indireta.html','more':'Ver a página sobre rescisão indireta'},

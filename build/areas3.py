@@ -39,7 +39,7 @@ page_area('administrativo-sancionador',
  'Administrativo Sancionador',
  'Foi notificado para responder a Processo Administrativo Disciplinar ou Sindicância?',
  'A forma como você se defende desde o início pode impactar diretamente sua carreira. Procedimentos que podem resultar em sanções funcionais exigem análise técnica desde a primeira notificação.',
- 'Solicitar análise do caso', 'martelo', 'Ilustração de um martelo de juiz.', 'matheus', [
+ 'Solicitar análise do caso', 'fotos/administrativo-sancionador.jpg', 'Mão folheando uma pilha de documentos presos com clipes, sobre uma mesa escura.', 'matheus', [
  b_statement('Receber uma notificação de instauração gera insegurança e incerteza quanto aos próximos passos', 'O servidor pode não saber exatamente do que está sendo acusado, subestimar a gravidade do procedimento, prestar esclarecimentos sem orientação técnica ou acreditar que a situação será resolvida administrativamente. Contudo, esses procedimentos podem resultar em advertência, suspensão, perda de função ou demissão.'),
  b_details('Sindicância e PAD: o que são', '', [
    {'t':'Sindicância Administrativa','p':'Procedimento investigatório que busca apurar fatos e responsabilidades, podendo ou não resultar em aplicação de penalidade.'},
@@ -135,7 +135,7 @@ page_area('empresas',
  'Para empresas',
  'Atuação técnica nas relações de trabalho e na defesa do negócio',
  'Empresas lidam diariamente com contratações, jornada, desligamentos, gestão de equipe e cumprimento de obrigações legais. Decisões mal conduzidas podem gerar passivos relevantes e demandas judiciais evitáveis.',
- 'Falar com o escritório', 'empresa', 'Ilustração de um prédio comercial.', 'jackson', [
+ 'Falar com o escritório', 'fotos/empresas.jpg', 'Equipe unindo as mãos sobre uma mesa de trabalho com notebooks e documentos.', 'jackson', [
  b_statement('Prevenir riscos costuma ser mais eficiente do que remediar passivos', 'Por isso é importante ter uma assessoria jurídica de confiança para auxiliar na condução das relações de trabalho, com foco em organização interna, redução de contingências e respostas juridicamente seguras para situações sensíveis do dia a dia empresarial. O escritório também atua na defesa judicial e administrativa em reclamações trabalhistas, autos de infração e conflitos envolvendo empregados e ex-empregados.'),
  b_band('Os principais pedidos de uma ação trabalhista', 'Demandas que exigem defesa técnica e estratégica.', ['Cobrança de horas extras e adicionais','Alegações de vínculo de emprego','Rescisão indireta proposta por empregado','Acidente de trabalho e indenizações','Assédio moral e danos extrapatrimoniais']),
  b_checks('A atuação vai muito além da defesa judicial', 'Outras medidas podem salvar sua empresa de ter um passivo trabalhista.', ['Consultoria trabalhista empresarial','Suporte preventivo para decisões do dia a dia','Admissões e modelos de contratação','Aplicação de advertências e suspensões','Desligamentos e rescisões sensíveis','Gestão de jornada e banco de horas','Cargos de confiança e enquadramentos','Políticas internas e regulamentos','Remuneração variável, comissões e premiações','Orientação em casos disciplinares','Compliance trabalhista','Estruturação interna para reduzir passivos e melhorar governança','Revisão de contratos de trabalho']),
@@ -205,17 +205,17 @@ funcional_page('brigadianos', 'Assistência Jurídica para Brigadianos',
  'Assistência jurídica contínua para brigadianos do Rio Grande do Sul, com foco em defesa técnica.',
  'Brigada Militar', 'Assistência Jurídica para Brigadianos do Rio Grande do Sul',
  'O brigadiano', 'do Brigadiano', 'Defesa elaborada por escritório com experiência real no ambiente militar.',
- 'O que está incluído para Brigadianos', MILITAR_COBERTURA, 'militar', 'Ilustração de um escudo com estrela militar.',
+ 'O que está incluído para Brigadianos', MILITAR_COBERTURA, 'fotos/brigadianos.jpg', 'Policiais militares de costas, com a inscrição Polícia Militar no colete.',
  'Olá! Vim pelo site e gostaria de saber mais sobre a assistência jurídica para brigadianos.')
 funcional_page('bombeiros-militares', 'Assistência Jurídica para Bombeiros Militares',
  'Assistência jurídica contínua para bombeiros militares do Rio Grande do Sul, com foco em defesa técnica.',
  'Bombeiros Militares', 'Assistência Jurídica para Bombeiros Militares do Rio Grande do Sul',
  'O militar', 'do bombeiro militar', 'Defesa elaborada por escritório com experiência real no ambiente militar.',
- 'O que está incluído para Bombeiros Militares', MILITAR_COBERTURA, 'funcional', 'Ilustração de um distintivo com uma chama.',
+ 'O que está incluído para Bombeiros Militares', MILITAR_COBERTURA, 'fotos/bombeiros-militares.jpg', 'Bombeiro militar de capacete e equipamento de respiração, com outros bombeiros ao fundo.',
  'Olá! Vim pelo site e gostaria de saber mais sobre a assistência jurídica para bombeiros militares.')
 funcional_page('policiais-penais', 'Assistência Jurídica para Policiais Penais',
  'Assistência jurídica contínua para policiais penais do Rio Grande do Sul, com foco em defesa técnica.',
  'SUSEPE', 'Assistência Jurídica para Policiais Penais do Rio Grande do Sul',
  'O policial penal', 'do policial penal', 'Defesa elaborada por escritório com experiência real no ambiente institucional da segurança pública.',
- 'O que está incluído para Policiais Penais', PENAL_COBERTURA, 'chave', 'Ilustração de uma chave sobre um distintivo.',
+ 'O que está incluído para Policiais Penais', PENAL_COBERTURA, 'fotos/policiais-penais.jpg', 'Policiais penais uniformizados em formação, com a inscrição Polícia Penal no colete.',
  'Olá! Vim pelo site e gostaria de saber mais sobre a assistência jurídica para policiais penais.')
