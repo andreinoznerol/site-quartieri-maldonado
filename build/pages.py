@@ -221,6 +221,37 @@ def b_related(r, current):
 </section>
 '''
 
+
+# Vídeos do YouTube por página (slug da página -> ID do vídeo)
+VIDEOS = {
+    'remocao-servidor-publico': 'XRdH-v7IgxY',
+    'mensalista-funcional': '-tfAaR84a9c',
+    'rescisao-indireta': 'zXvL1oyHS5U',
+}
+
+def b_video(vid, tema):
+    play = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>'
+    return f"""<section class="video">
+  <div class="wrap">
+    <div class="video__text">
+      <span class="label">Vídeo</span>
+      <h2 class="display">Entenda em vídeo</h2>
+      <p>Assista à explicação do escritório sobre {E(tema)}.</p>
+      <a class="video__yt" href="https://www.youtube.com/shorts/{vid}" target="_blank" rel="noopener">Abrir no YouTube</a>
+    </div>
+    <div class="video__frame" data-video="{vid}">
+      <button type="button" class="video__play" aria-label="Reproduzir vídeo sobre {E(tema)}">
+        <img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360" onerror="this.style.visibility='hidden'">
+        <span class="video__btn">{play}</span>
+      </button>
+    </div>
+  </div>
+  <script>
+  (function(){{var f=document.currentScript.parentNode.querySelector('.video__frame');f.querySelector('button').addEventListener('click',function(){{var i=document.createElement('iframe');i.src='https://www.youtube-nocookie.com/embed/'+f.dataset.video+'?autoplay=1&playsinline=1&rel=0';i.title='Vídeo sobre {E(tema)}';i.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';i.allowFullscreen=true;f.innerHTML='';f.appendChild(i);}});}})();
+  </script>
+</section>
+"""
+
 def page_area(slug, meta_title, meta_desc, crumb, h1, lede, cta_btn, art, art_alt, owner, blocks, wa_msg, parent=None):
     r = '../../'
     link = wa(wa_msg)
@@ -261,6 +292,8 @@ def page_area(slug, meta_title, meta_desc, crumb, h1, lede, cta_btn, art, art_al
         if want_tint: classes.append('tint')
         prev = 'tint' if want_tint else 'white'
         parts[i] = part.replace(m.group(0), '<section class="' + ' '.join([kind] + classes) + '"', 1)
+    if slug in VIDEOS:
+        parts.insert(1, b_video(VIDEOS[slug], crumb.lower() if crumb[:1].isupper() and not crumb.isupper() else crumb))
     body = ''.join(parts)
     if parent:
         canon, path, cur = f'/areas/{parent[0]}/{slug}', f'{OUT}/areas/{parent[0]}/{slug}.html', parent[0]
