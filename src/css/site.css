@@ -582,3 +582,4 @@ a.fact:hover strong{color:var(--vivo)}
 .video__play:hover .video__btn{transform:scale(1.08)}
 @media (max-width:900px){.video{padding:72px 0}.video .wrap{grid-template-columns:1fr;gap:40px}.video__frame{justify-self:start}}
 @media (max-width:600px){.video__frame{max-width:260px}}
+.statement p+p{margin-top:1.1em}

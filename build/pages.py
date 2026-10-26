@@ -132,7 +132,7 @@ def b_statement(title, text, variant='', link=None):
     return f'''<section class="statement {variant}">
   <div class="wrap">
     <h2 class="display">{E(title)}</h2>
-    <div><p>{E(text)}</p>{more}</div>
+    <div>{''.join(f'<p>{E(t)}</p>' for t in ([text] if isinstance(text, str) else text))}{more}</div>
   </div>
 </section>
 '''
@@ -210,6 +210,7 @@ AREAS = [
  ('mensalista-funcional','Assistência funcional','Policiais e bombeiros militares'),
  ('direito-publico','Direito Público','Servidores, candidatos e militares'),
  ('trabalhista','Direito Trabalhista','Trabalhadores e empresas'),
+ ('direito-civil','Direito Civil','Contratos, imóveis e patrimônio'),
 ]
 def b_related(r, current):
     links = ''.join(f'<a href="{r}areas/{slug}/index.html">{E(name)}<span>{E(sub)}</span></a>' for slug,name,sub in AREAS if slug != current)
@@ -437,6 +438,39 @@ page_area('trabalhista',
    ('Como funciona o primeiro contato?','O primeiro contato serve para compreender a situação apresentada, verificar a viabilidade jurídica e indicar os próximos passos com objetividade.')]),
  lambda link: b_cta('Converse com o escritório para avaliar o caso', 'A análise inicial organiza os fatos, identifica riscos e indica a medida juridicamente cabível para a situação.', 'Entrar em contato', link),
  ], 'Olá! Vim pelo site e gostaria de orientação sobre Direito Trabalhista.')
+
+page_area('direito-civil',
+ 'Direito Civil | Quartieri & Maldonado Advogados Associados',
+ 'Orientação jurídica em contratos, responsabilidade civil, direitos reais, direito imobiliário, cobranças e conflitos patrimoniais, nas esferas consultiva e contenciosa.',
+ 'Direito Civil',
+ 'Orientação jurídica para questões contratuais, patrimoniais e imobiliárias',
+ 'Atuação em contratos, responsabilidade civil, direitos reais, cobranças e conflitos patrimoniais, nas esferas consultiva e contenciosa, com análise individualizada e atenção às particularidades de cada demanda.',
+ 'Falar com o escritório', 'contrato', 'Ilustração de um contrato sendo assinado.', 'jackson', [
+ b_statement('Atuação técnica e especializada', [
+   'Contratos, imóveis, obrigações e relações patrimoniais podem dar origem a dúvidas e conflitos que exigem análise jurídica cuidadosa. Um contrato que precisa ser revisto, uma obrigação não cumprida, um prejuízo que se busca reparar ou um imóvel com pendências de regularização são situações que podem exigir orientação jurídica para a avaliação dos direitos envolvidos e dos caminhos disponíveis.',
+   'No Quartieri & Maldonado Advogados Associados, cada demanda cível é examinada de acordo com suas circunstâncias, documentos e objetivos. A atuação pode envolver orientação preventiva, negociação extrajudicial ou representação judicial, conforme a natureza do problema e a viabilidade de cada alternativa.'], 'tint'),
+ b_details('Principais temas analisados pelo escritório', '', [
+   {'t':'Contratos cíveis','p':'Elaboração, análise e revisão de contratos de compra e venda, locação, prestação de serviços, comodato, mandato e outros negócios jurídicos. A atuação busca esclarecer direitos, obrigações, responsabilidades e condições pactuadas, além de identificar riscos e pontos que mereçam atenção antes da assinatura ou durante a execução do contrato.'},
+   {'t':'Responsabilidade civil e indenizações','p':'Atuação em controvérsias relacionadas a danos materiais, morais e estéticos, acidentes, descumprimento de obrigações e falhas na prestação de serviços. A análise considera os fatos, as provas disponíveis, os requisitos jurídicos aplicáveis e a possibilidade de buscar reparação ou apresentar defesa, conforme a posição do cliente no conflito.'},
+   {'t':'Direitos reais e posse','p':'Atuação em demandas envolvendo propriedade, posse e outros direitos reais, incluindo usucapião, reintegração de posse, manutenção de posse, interdito proibitório, demarcação de terras e divisão de coisa comum. Cada caso é avaliado a partir da situação do imóvel, da documentação, do histórico da posse ou da propriedade e dos requisitos legais pertinentes.'},
+   {'t':'Direito imobiliário','p':'Assessoria jurídica em negócios imobiliários, com análise de contratos de compra e venda, orientação sobre escrituras e transferência de propriedade, exame de pendências documentais e acompanhamento de procedimentos de regularização imobiliária. A atuação também abrange conflitos relacionados à locação, ações de despejo e questões condominiais, conforme as particularidades de cada caso.'},
+   {'t':'Obrigações, cobranças e execuções','p':'Atuação na cobrança de valores e no cumprimento de obrigações contratuais, assim como na defesa de pessoas e empresas em cobranças judiciais e execuções. Conforme os documentos e as características do crédito, podem ser avaliadas medidas extrajudiciais, ação de cobrança, ação monitória, execução de título extrajudicial ou medidas de defesa cabíveis.'},
+   {'t':'Disputas patrimoniais','p':'Análise e condução de controvérsias que envolvam bens, direitos e obrigações de expressão patrimonial, especialmente quando há múltiplas relações jurídicas ou repercussões em diferentes áreas do Direito. A estratégia considera os interesses envolvidos, os riscos jurídicos e econômicos, as provas disponíveis e as alternativas para a condução da demanda.'}]),
+ b_band('Como trabalhamos', '', [
+   {'t':'1. Escuta e análise','p':'Compreendemos a situação apresentada, examinamos os documentos pertinentes e identificamos as questões jurídicas relevantes. Essa etapa permite delimitar o problema e esclarecer quais informações adicionais são necessárias para uma avaliação consistente.'},
+   {'t':'2. Avaliação das alternativas','p':'Analisamos os caminhos juridicamente possíveis, considerando requisitos legais, provas, prazos, riscos e consequências práticas. A partir dessa avaliação, apresentamos as alternativas identificadas para que o cliente possa decidir de maneira informada.'},
+   {'t':'3. Condução da demanda','p':'Definida a estratégia, conduzimos as providências extrajudiciais ou judiciais pertinentes, com acompanhamento do caso e comunicação sobre os encaminhamentos relevantes. A atuação é orientada pelas particularidades da demanda e pode ser ajustada diante de fatos novos ou mudanças no cenário jurídico.'}]),
+ b_details('Do preventivo ao contencioso', 'A atuação em Direito Civil pode começar antes do surgimento de um conflito ou ocorrer quando a controvérsia já está estabelecida. Sempre que pertinente, a possibilidade de negociação ou composição é examinada em conjunto com as demais alternativas juridicamente disponíveis.', [
+   {'t':'Atuação consultiva e preventiva','p':'Análise e elaboração de contratos, orientação sobre obrigações, avaliação de riscos jurídicos e apoio em negociações. O objetivo é proporcionar maior clareza sobre as relações jurídicas e contribuir para a prevenção de problemas.'},
+   {'t':'Atuação contenciosa','p':'Representação judicial em conflitos contratuais, patrimoniais, imobiliários e obrigacionais, tanto na defesa de direitos quanto na contestação de pretensões formuladas por terceiros. A condução do processo considera os fundamentos jurídicos, os elementos de prova e as particularidades de cada demanda.'}]),
+ b_faq('Dúvidas iniciais', '', [
+   ('Preciso de um advogado antes de assinar um contrato?','A contratação de um advogado não é obrigatória para a assinatura da maioria dos contratos particulares. A análise jurídica prévia, contudo, pode ajudar a esclarecer as cláusulas, identificar riscos e avaliar as consequências das obrigações assumidas antes da formalização do negócio.'),
+   ('É possível resolver um conflito sem entrar na Justiça?','Sim, dependendo das circunstâncias do caso. Notificações extrajudiciais, negociações e acordos podem ser alternativas adequadas, mas a viabilidade depende dos interesses envolvidos, da disposição das partes e das medidas necessárias para resguardar os direitos em questão.'),
+   ('O escritório atua tanto para quem cobra quanto para quem está sendo cobrado?','Sim. A atuação pode compreender a análise e a cobrança de créditos, assim como a defesa em ações de cobrança e execuções. A medida juridicamente adequada depende da documentação, da natureza da obrigação e das circunstâncias concretas.'),
+   ('O atendimento é somente presencial?','Não. O escritório atende presencialmente em Santa Maria/RS e também de forma online, conforme as características da demanda e a necessidade de análise de documentos ou realização de reuniões.'),
+   ('Como funciona o primeiro contato?','O primeiro contato é destinado ao recebimento das informações iniciais e à compreensão geral da demanda, para avaliar os próximos passos. A contratação dos serviços, os honorários e o escopo da atuação são definidos conforme o caso e formalizados nos documentos pertinentes.')]),
+ lambda link: b_cta('Converse com o escritório para avaliar o caso', 'A análise inicial organiza os fatos, identifica riscos e indica a medida juridicamente cabível para a situação.', 'Entrar em contato', link),
+ ], 'Olá! Vim pelo site e gostaria de orientação sobre Direito Civil.')
 
 exec(open(os.path.join(HERE,'areas3.py'),encoding='utf-8').read())
 exec(open(os.path.join(HERE,'areas4.py'),encoding='utf-8').read())
