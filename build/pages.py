@@ -90,7 +90,7 @@ def footer(r, wa_link):
           <li><a href="{h}#inicio">Início</a></li>
           <li><a href="{h}#areas">Áreas de atuação</a></li>
           <li><a href="{h}#publicacoes">Publicações</a></li>
-          <li><a href="{h}#escritorio">Sobre o escritório</a></li>
+          <li><a href="{h}#escritorio">Sobre nós</a></li>
           <li><a href="{h}#contato">Contato</a></li>
         </ul>
       </div>
@@ -129,6 +129,7 @@ def footer(r, wa_link):
 # ---------- blocos ----------
 def b_statement(title, text, variant='', link=None):
     more = f'<a class="statement__more" href="{link[0]}">{E(link[1])}</a>' if link else ''
+    if len(title) > 44 and 'quiet' not in variant: variant = (variant + ' stack').strip()
     return f'''<section class="statement {variant}">
   <div class="wrap">
     <h2 class="display">{E(title)}</h2>
@@ -205,9 +206,9 @@ def b_cta(title, text, btn, link):
 '''
 
 AREAS = [
- ('penal','Defesa Criminal','Direito Criminal'),
+ ('penal','Direito Criminal','Investigações e processos criminais'),
  ('militar','Direito Militar','Direito Penal Militar'),
- ('mensalista-funcional','Assistência funcional','Policiais e bombeiros militares'),
+ ('mensalista-funcional','Assistência Funcional','Brigada Militar, Bombeiros e Polícia Penal'),
  ('direito-publico','Direito Público','Servidores, candidatos e militares'),
  ('trabalhista','Direito Trabalhista','Trabalhadores e empresas'),
  ('direito-civil','Direito Civil','Contratos, imóveis e patrimônio'),
@@ -288,12 +289,12 @@ def page_area(slug, meta_title, meta_desc, crumb, h1, lede, cta_btn, art, art_al
         n, role, img = PEOPLE[owner]
         own = f'<div class="owner"><img src="{r}{img}" alt="" width="44" height="44"><p><b>{E(n)}</b>{E(role)}</p></div>'
     faq_btn = '<a class="btn btn-line" href="#duvidas">Ver dúvidas frequentes</a>' if any(('id="duvidas"' in (b if isinstance(b,str) else '')) for b in blocks) else ''
-    parent_crumb = f'<a href="index.html">{E(parent[1])}</a><span aria-hidden="true">/</span>' if parent else ''
+    parent_crumb = f'<a href="index.html">{E(TITLES.get(parent[0], parent[1]))}</a><span aria-hidden="true">/</span>' if parent else ''
     hero = f'''<main>
 <section class="phero">
   <div class="wrap">
     <div>
-      <nav class="crumb" aria-label="Você está em"><a href="{r}index.html">Início</a><span aria-hidden="true">/</span><a href="{r}index.html#areas">Áreas de atuação</a><span aria-hidden="true">/</span>{parent_crumb}<span aria-current="page">{E(crumb)}</span></nav>
+      <nav class="crumb" aria-label="Você está em"><a href="{r}index.html">Início</a><span aria-hidden="true">/</span><a href="{r}index.html#areas">Áreas de atuação</a><span aria-hidden="true">/</span>{parent_crumb}<span aria-current="page">{E(TITLES.get(slug, crumb))}</span></nav>
       {h1_html}
       <p class="phero__lede">{E(lede)}</p>
       <div class="hero__ctas">

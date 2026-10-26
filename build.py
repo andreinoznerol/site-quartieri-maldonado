@@ -69,4 +69,16 @@ try:
 except ImportError:
     print('Aviso: Pillow não instalado, imagens do painel não foram otimizadas.')
 
+# Títulos com dois-pontos: a segunda parte começa na linha de baixo
+import re as _re
+_h2 = _re.compile(r'(<h2 class="display"[^>]*>)([^<]+?): ([^<]+)(</h2>)')
+for base, _, files in os.walk(OUT):
+    if 'admin' in base: continue
+    for f in files:
+        if not f.endswith('.html'): continue
+        path = os.path.join(base, f)
+        html = open(path, encoding='utf-8').read()
+        novo = _h2.sub(r'\1\2:<br>\3\4', html)
+        if novo != html: open(path, 'w', encoding='utf-8').write(novo)
+
 print(f'Site gerado em dist/ com {len(lista)} publicação(ões).')

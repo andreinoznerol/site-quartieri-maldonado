@@ -285,7 +285,8 @@ a.fact:hover strong{color:var(--vivo)}
 
 .block{padding:112px 0}
 .block.tint{background:var(--gelo)}
-.block__head{max-width:760px}
+.block__head{max-width:none}
+.block__head p{max-width:760px}
 .block__head h2{font-size:clamp(1.8rem,3.2vw,2.6rem)}
 .block__head p{margin-top:18px;color:var(--suave);font-size:1.06rem;line-height:1.8}
 .checks{list-style:none;padding:0;margin:56px 0 0;display:grid;grid-template-columns:repeat(2,1fr);column-gap:64px}
@@ -592,3 +593,93 @@ a.fact:hover strong{color:var(--vivo)}
 main p{text-align:justify;text-justify:inter-word;-webkit-hyphens:auto;hyphens:auto;hyphenate-limit-chars:7 3 3}
 main .cta p, main .statement.quiet p, main .crumb, main .owner p, main .feature__meta, main .insta p, main .note, main .socio__role, main .hero__sub, main .nucleo-card__head p, main .map__card p, main .phero__headline{text-align:inherit;hyphens:manual;-webkit-hyphens:manual}
 @media (max-width:600px){.phero__name{font-size:2.5rem}.phero__headline{font-size:1.15rem}}
+
+/* =========================================================
+   Ajuste fino final: escala tipográfica e espaçamentos únicos
+   (os mesmos valores em todas as páginas)
+   ========================================================= */
+:root{
+  --t-h1:clamp(2.6rem,5vw,4.2rem);      /* título das páginas internas */
+  --t-h2:clamp(2rem,3.3vw,2.85rem);     /* título de seção (todas) */
+  --t-h3:1.25rem;                       /* título de cartão/item */
+  --t-lead:1.08rem;                     /* parágrafo de abertura/apoio */
+  --t-body:1rem;                        /* texto corrido */
+  --t-card:.97rem;                      /* texto de cartão */
+  --s-sec:120px;                        /* respiro vertical das seções */
+  --s-head:64px;                        /* título da seção -> conteúdo */
+}
+/* Títulos de seção */
+h2.display,.statement h2,.block__head h2,.faq h2,.cta h2,.video h2{font-size:var(--t-h2);line-height:1.1}
+.legal-hero h1{font-size:var(--t-h1)}
+/* Seções: mesmo respiro */
+.sec,.statement,.block,.band,.faq,.cta,.video{padding-top:var(--s-sec);padding-bottom:var(--s-sec)}
+#areas{padding-bottom:var(--s-sec)!important}
+.funcional{padding-bottom:var(--s-sec)}
+.related{padding:96px 0}
+/* Cabeçalho das seções da página inicial: título e texto empilhados, como nas páginas internas */
+.head{display:block}
+.head h2{margin-top:14px}
+.head .intro{margin-top:20px;max-width:64ch}
+/* Distância título -> conteúdo */
+.socios__grid,.nucleos,.posts__grid,.checks,.details,.tiles{margin-top:var(--s-head)}
+/* Textos de apoio (abaixo de títulos) */
+.intro,.block__head p,.faq__intro,.statement p,.phero__lede,.video p,.cta p{font-size:var(--t-lead);line-height:1.8}
+.block__head p,.intro{max-width:64ch}
+/* Títulos de cartões e itens */
+.detail h3,.tile h3,.pcard h3{font-size:var(--t-h3);font-weight:500;letter-spacing:-.015em;line-height:1.35}
+.nucleo-card__list h4{font-size:var(--t-h3);font-weight:500;letter-spacing:-.015em;line-height:1.35}
+.funcional h3{font-size:1.35rem}
+/* Textos de cartões */
+.detail p,.tile p,.pcard p,.nucleo-card__list p,.feature p,.insta p,.funcional p,.socio li{font-size:var(--t-card);line-height:1.75}
+.qa summary,.checks li{font-size:1.08rem}
+.qa details p{font-size:var(--t-body)}
+/* Título de publicação (página do artigo) um pouco menor que o das áreas, pois costuma ser longo */
+.phero h1.display{font-size:clamp(2rem,3.6vw,3rem);line-height:1.12}
+/* Seções em duas colunas: título com largura proporcional ao texto */
+.statement .wrap{grid-template-columns:1fr 1fr;gap:80px}
+.faq .wrap{grid-template-columns:.9fr 1.1fr;gap:80px}
+@media (max-width:900px){
+  :root{--s-sec:88px;--s-head:44px}
+  .statement .wrap,.faq .wrap{grid-template-columns:1fr;gap:24px}
+}
+@media (max-width:600px){
+  :root{--t-h2:1.85rem;--s-sec:72px;--s-head:36px}
+  .phero h1.display{font-size:1.9rem}
+}
+/* Títulos longos: ocupam a largura toda e o texto vem abaixo (evita título "em coluna") */
+.statement.stack .wrap{grid-template-columns:1fr;gap:28px}
+.statement.stack h2{max-width:none}
+.statement.stack p{max-width:72ch}
+.statement.quiet .wrap,.cta .wrap{max-width:980px}
+.faq .wrap{grid-template-columns:1fr 1fr}
+@media (max-width:900px){.faq .wrap{grid-template-columns:1fr}}
+/* Títulos com linhas equilibradas (sem palavra sozinha na última linha) */
+h1,h2,h3,h4,.phero__name,.phero__headline{text-wrap:balance}
+p{text-wrap:pretty}
+/* Cartões estreitos: alinhados à esquerda (justificar em coluna estreita abre buracos entre palavras) */
+main .feature p,main .pcard p,main .funcional p{text-align:left;hyphens:manual;-webkit-hyphens:manual}
+.statement.quiet .wrap{gap:24px}
+.related__list{grid-template-columns:repeat(5,1fr)}
+@media (max-width:1060px){.related__list{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:900px){.related__list{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.related__list{grid-template-columns:1fr}}
+/* No celular a coluna é estreita demais para justificar sem abrir buracos: alinhado à esquerda */
+@media (max-width:600px){
+  /* No celular: justificado só nos textos corridos longos (com hifenização);
+     cartões, listas e frases curtas ficam à esquerda para não abrir buracos */
+  main p{text-align:left}
+  main .statement p,main .phero__lede,main .article p,main .legal p,main .qa details p,main .socios .intro,main .escritorio p.intro{text-align:justify;-webkit-hyphens:auto;hyphens:auto}
+  main .statement.quiet p{text-align:left}
+}
+/* Alinhamentos finais: texto do artigo e das páginas legais começa na mesma linha do título */
+.article .wrap{max-width:var(--max)}
+.article .wrap > *{max-width:760px}
+.legal-hero .wrap{max-width:760px}
+/* Vídeo no celular/tablet: bloco todo centralizado */
+@media (max-width:900px){
+  .video .wrap{justify-items:center;text-align:center}
+  .video__text{max-width:520px}
+  .video p{margin-left:auto;margin-right:auto}
+  .video__frame{justify-self:center}
+}
+main .video p{text-align:inherit;hyphens:manual;-webkit-hyphens:manual}
