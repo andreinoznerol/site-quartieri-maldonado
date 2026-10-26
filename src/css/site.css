@@ -694,3 +694,28 @@ main .video p{text-align:inherit;hyphens:manual;-webkit-hyphens:manual}
   .footer li + li{margin-top:6px}
   a,button,summary{-webkit-tap-highlight-color:rgba(0,42,97,.08)}
 }
+
+/* ===== Texto justificado em todas as telas (versão final) =====
+   A hifenização vem pronta do build (hífens invisíveis em português),
+   então o resultado é igual no iPhone, Android e computador. */
+main p{text-align:justify;-webkit-hyphens:manual;hyphens:manual;text-wrap:wrap;word-spacing:-.01em}
+/* exceções: textos centralizados e linhas curtas/rótulos */
+main .cta p,main .statement.quiet p,main .video p,main .owner p,main .feature__meta,main .note,main .socio__role,main .hero__sub,main .nucleo-card__head p,main .map__card p,main .crumb,main .posts__empty,main .insta__handle{text-align:inherit}
+main .statement.quiet p,main .cta p,main .video p{text-align:center}
+@media (max-width:900px){main .statement.quiet p{text-align:justify}}
+@media (max-width:600px){
+  main p{text-align:justify}
+  main .cta p,main .video p{text-align:center}
+  main .statement.quiet p{text-align:justify}
+  main .owner p,main .socio__role,main .hero__sub,main .nucleo-card__head p,main .map__card p,main .note{text-align:left}
+}
+@media (max-width:600px){
+  .tile{padding:26px 22px 28px}
+  .wrap{padding-left:20px;padding-right:20px}
+}
+@media (max-width:600px){
+  main p{hyphens:manual;-webkit-hyphens:manual;text-wrap:wrap}
+  .statement p,.phero__lede,.intro,.block__head p,.faq__intro,.escritorio p.intro{font-size:1.02rem;line-height:1.8}
+}
+main p:has(a[href^="mailto"]),main p:has(a[href^="http"]){text-align:left}
+main .owner p,main .socio__role,main .hero__sub,main .nucleo-card__head p,main .map__card p,main .feature__meta,main .crumb{-webkit-hyphens:none;hyphens:none;text-align:left}

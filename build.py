@@ -81,4 +81,35 @@ for base, _, files in os.walk(OUT):
         novo = _h2.sub(r'\1\2:<br>\3\4', html)
         if novo != html: open(path, 'w', encoding='utf-8').write(novo)
 
+# Hifenização em português (dicionário pt_BR embutido): insere hífens "invisíveis" nas palavras longas
+# dos parágrafos. Eles só aparecem quando a palavra quebra no fim da linha, o que permite texto
+# justificado sem buracos, igual em qualquer celular ou navegador.
+try:
+    import pyphen
+    _dic = pyphen.Pyphen(lang='pt_BR', left=2, right=3)
+    _word = _re.compile(r'(?<![A-Za-zÀ-ÿ-])[A-ZÁÂÃÉÊÍÓÔÕÚÇa-záàâãéêíóôõúüç][a-záàâãéêíóôõúüç]{5,}(?![A-Za-zÀ-ÿ])')
+    _nomes = {'Quartieri','Maldonado','Matheus','Jackson','Simões','Antofagasta','Instagram','LinkedIn','Facebook','YouTube','Google','WhatsApp','Netlify','Montserrat','Vercel'}
+    _cache = {}
+    def _hy(m):
+        w = m.group(0)
+        if w in _nomes: return w
+        if w not in _cache: _cache[w] = _dic.inserted(w, hyphen='­')
+        return _cache[w]
+    def _hy_p(m):
+        partes = _re.split(r'(<[^>]+>|&[#a-zA-Z0-9]+;)', m.group(2))
+        return m.group(1) + ''.join(x if (x.startswith('<') or x.startswith('&')) else _word.sub(_hy, x) for x in partes) + m.group(3)
+    _p = _re.compile(r'(<p\b[^>]*>)(.*?)(</p>)', _re.S)
+    for base, _, files in os.walk(OUT):
+        if 'admin' in base: continue
+        for f in files:
+            if not f.endswith('.html'): continue
+            path = os.path.join(base, f)
+            html = open(path, encoding='utf-8').read()
+            ini, fim = html.find('<main'), html.find('</main>')
+            if ini < 0 or fim < 0: continue
+            html = html[:ini] + _p.sub(_hy_p, html[ini:fim]) + html[fim:]
+            open(path, 'w', encoding='utf-8').write(html)
+except Exception as e:
+    print('Aviso: hifenização não aplicada:', e)
+
 print(f'Site gerado em dist/ com {len(lista)} publicação(ões).')
