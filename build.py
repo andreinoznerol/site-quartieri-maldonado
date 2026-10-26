@@ -26,4 +26,47 @@ with open(os.path.join(OUT, 'sitemap.xml'), 'w', encoding='utf-8') as fh:
     for u in sorted(set(urls)):
         fh.write(f'  <url><loc>https://quartierimaldonado.com{u}</loc></url>\n')
     fh.write('</urlset>\n')
+
+# Tag do Google (Google Ads + Analytics) em modo sem cookies, conforme a Política de Privacidade
+GTAG_ID = 'GT-TXBWT6T9'
+GTAG = f"""<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){{dataLayer.push(arguments);}}
+gtag('consent', 'default', {{ad_storage: 'denied', analytics_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'}});
+gtag('js', new Date());
+gtag('config', '{GTAG_ID}');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={GTAG_ID}"></script>
+"""
+for base, _, files in os.walk(OUT):
+    if 'admin' in base: continue
+    for f in files:
+        if not f.endswith('.html'): continue
+        path = os.path.join(base, f)
+        html = open(path, encoding='utf-8').read()
+        if 'googletagmanager.com/gtag' in html or '</head>' not in html: continue
+        open(path, 'w', encoding='utf-8').write(html.replace('</head>', GTAG + '</head>', 1))
+
+# Imagens enviadas pelo painel: reduz e comprime automaticamente as muito grandes
+try:
+    from PIL import Image, ImageOps
+    up = os.path.join(OUT, 'img', 'uploads')
+    for base, _, files in os.walk(up):
+        for f in files:
+            if not f.lower().endswith(('.jpg', '.jpeg', '.png', '.webp')): continue
+            path = os.path.join(base, f)
+            try:
+                im = Image.open(path)
+                if im.width <= 1600 and os.path.getsize(path) <= 400_000: continue
+                im = ImageOps.exif_transpose(im)
+                im.thumbnail((1600, 1600))
+                if f.lower().endswith(('.jpg', '.jpeg')):
+                    im.convert('RGB').save(path, quality=80, optimize=True, progressive=True)
+                else:
+                    im.save(path, optimize=True)
+            except Exception as e:
+                print('Aviso: não consegui otimizar', f, e)
+except ImportError:
+    print('Aviso: Pillow não instalado, imagens do painel não foram otimizadas.')
+
 print(f'Site gerado em dist/ com {len(lista)} publicação(ões).')
