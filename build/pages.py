@@ -253,7 +253,33 @@ def b_video(vid, tema):
 </section>
 """
 
+# Título curto de cada página (grande); a frase original vira subtítulo
+TITLES = {
+    'penal': 'Direito Criminal',
+    'militar': 'Direito Militar',
+    'mensalista-funcional': 'Assistência Funcional',
+    'direito-publico': 'Direito Público',
+    'trabalhista': 'Direito Trabalhista',
+    'direito-civil': 'Direito Civil',
+    'retirada-antecedentes': 'Retirada de Antecedentes',
+    'administrativo-sancionador': 'Administrativo Sancionador',
+    'investigacao-social': 'Investigação Social',
+    'remocao-servidor-publico': 'Remoção de Servidor Público',
+    'remocao-policiais-penais-rs': 'Remoção de Policiais Penais do RS',
+    'rescisao-indireta': 'Rescisão Indireta',
+    'empresas': 'Trabalhista para Empresas',
+    'trabalhador': 'Direito do Trabalhador',
+    'brigadianos': 'Brigada Militar',
+    'bombeiros-militares': 'Bombeiros Militares',
+    'policiais-penais': 'Policiais Penais',
+}
+
 def page_area(slug, meta_title, meta_desc, crumb, h1, lede, cta_btn, art, art_alt, owner, blocks, wa_msg, parent=None):
+    title = TITLES.get(slug, h1)
+    if title.lower() == h1.lower():
+        h1_html = f'<h1 class="phero__title"><span class="display phero__name">{E(title)}</span></h1>'
+    else:
+        h1_html = f'<h1 class="phero__title"><span class="display phero__name">{E(title)}</span><span class="phero__headline">{E(h1)}</span></h1>'
     art_file = art if '.' in art else art + '.svg'
     r = '../../'
     link = wa(wa_msg)
@@ -268,7 +294,7 @@ def page_area(slug, meta_title, meta_desc, crumb, h1, lede, cta_btn, art, art_al
   <div class="wrap">
     <div>
       <nav class="crumb" aria-label="Você está em"><a href="{r}index.html">Início</a><span aria-hidden="true">/</span><a href="{r}index.html#areas">Áreas de atuação</a><span aria-hidden="true">/</span>{parent_crumb}<span aria-current="page">{E(crumb)}</span></nav>
-      <h1 class="display">{E(h1)}</h1>
+      {h1_html}
       <p class="phero__lede">{E(lede)}</p>
       <div class="hero__ctas">
         <a class="btn btn-solid" href="{link}" target="_blank" rel="noopener">{E(cta_btn)}</a>
