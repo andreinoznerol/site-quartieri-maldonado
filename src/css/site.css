@@ -683,3 +683,14 @@ main .feature p,main .pcard p,main .funcional p{text-align:left;hyphens:manual;-
   .video__frame{justify-self:center}
 }
 main .video p{text-align:inherit;hyphens:manual;-webkit-hyphens:manual}
+/* Menu do celular: contato direto no rodapé do menu */
+.drawer{overflow-y:auto}
+.drawer__contact{margin-top:auto;padding-top:32px;display:flex;flex-direction:column;gap:6px;font-size:.95rem;color:var(--suave)}
+.drawer__contact a{color:var(--tinta);text-decoration:none;font-weight:500;padding:6px 0}
+.drawer__contact span{margin-top:6px;font-size:.88rem;line-height:1.6}
+/* Toques mais confortáveis no celular */
+@media (max-width:900px){
+  .crumb a,.footer a{display:inline-block;padding:4px 0}
+  .footer li + li{margin-top:6px}
+  a,button,summary{-webkit-tap-highlight-color:rgba(0,42,97,.08)}
+}

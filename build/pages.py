@@ -21,8 +21,8 @@ SOC = {
 Q_DECOR = '<svg class="q" viewBox="0 0 600 600" aria-hidden="true"><path d="M98.5 501.5 A285 285 0 1 1 442.5 546.8 L497 604" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>'
 
 PEOPLE = {
- 'matheus':('Matheus Quartieri Simões Pires','Núcleo Penal, Penal Militar e Administrativo Sancionador','img/matheus-quartieri.jpg'),
- 'jackson':('Jackson Maldonado','Núcleo Cível, Direito Público e Direito do Trabalho','img/jackson-maldonado.jpg'),
+ 'matheus':('Matheus Quartieri Simões Pires','Núcleo Penal, Penal Militar e Administrativo Sancionador','img/matheus-quartieri-avatar.webp'),
+ 'jackson':('Jackson Maldonado','Núcleo Cível, Direito Público e Direito do Trabalho','img/jackson-maldonado-avatar.webp'),
 }
 
 def head(r, title, desc, canon):
@@ -41,6 +41,7 @@ def head(r, title, desc, canon):
 <meta property="og:description" content="{E(desc)}">
 <meta property="og:image" content="https://quartierimaldonado.com/img/og.jpg">
 <link rel="icon" href="{r}img/logo-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{r}img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -71,6 +72,7 @@ def header(r, wa_link):
 <nav class="drawer" id="menu" aria-label="Menu">
   {drawer}
   <a class="btn btn-solid" href="{wa_link}" target="_blank" rel="noopener">Entre em contato</a>
+  <div class="drawer__contact"><a href="tel:+5555997350808">(55) 99735-0808</a><a href="mailto:adm@quartierimaldonado.com">adm@quartierimaldonado.com</a><span>Alameda Antofagasta 77, Sala 609<br>Santa Maria/RS</span></div>
 </nav>
 '''
 
@@ -281,7 +283,7 @@ def page_area(slug, meta_title, meta_desc, crumb, h1, lede, cta_btn, art, art_al
         h1_html = f'<h1 class="phero__title"><span class="display phero__name">{E(title)}</span></h1>'
     else:
         h1_html = f'<h1 class="phero__title"><span class="display phero__name">{E(title)}</span><span class="phero__headline">{E(h1)}</span></h1>'
-    art_file = art if '.' in art else art + '.svg'
+    art_file = (art[:-4] + '.webp' if art.endswith('.jpg') else art) if '.' in art else art + '.svg'
     r = '../../'
     link = wa(wa_msg)
     own = ''
@@ -303,7 +305,7 @@ def page_area(slug, meta_title, meta_desc, crumb, h1, lede, cta_btn, art, art_al
       </div>
       {own}
     </div>
-    <div class="phero__art"><div class="arch"><img src="{r}img/areas/{art_file}" alt="{E(art_alt)}" width="400" height="500"></div></div>
+    <div class="phero__art"><div class="arch"><img src="{r}img/areas/{art_file}" alt="{E(art_alt)}" width="400" height="500" loading="lazy" decoding="async"></div></div>
   </div>
 </section>
 '''
