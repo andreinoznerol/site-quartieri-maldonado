@@ -474,7 +474,7 @@ page_area('direito-civil',
  'Direito Civil',
  'Orientação jurídica para questões contratuais, patrimoniais e imobiliárias',
  'Atuação em contratos, responsabilidade civil, direitos reais, cobranças e conflitos patrimoniais, nas esferas consultiva e contenciosa, com análise individualizada e atenção às particularidades de cada demanda.',
- 'Falar com o escritório', 'contrato', 'Ilustração de um contrato sendo assinado.', 'jackson', [
+ 'Falar com o escritório', 'fotos/direito-civil.jpg', 'Aperto de mãos entre duas pessoas sobre uma mesa com documentos e canetas, simbolizando um acordo.', 'jackson', [
  b_statement('Atuação técnica e especializada', [
    'Contratos, imóveis, obrigações e relações patrimoniais podem dar origem a dúvidas e conflitos que exigem análise jurídica cuidadosa. Um contrato que precisa ser revisto, uma obrigação não cumprida, um prejuízo que se busca reparar ou um imóvel com pendências de regularização são situações que podem exigir orientação jurídica para a avaliação dos direitos envolvidos e dos caminhos disponíveis.',
    'No Quartieri & Maldonado Advogados Associados, cada demanda cível é examinada de acordo com suas circunstâncias, documentos e objetivos. A atuação pode envolver orientação preventiva, negociação extrajudicial ou representação judicial, conforme a natureza do problema e a viabilidade de cada alternativa.'], 'tint'),
